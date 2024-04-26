@@ -23,6 +23,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        env:
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_EXPIRE_DURATION: ${{ secrets.JWT_EXPIRE_DURATION }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
